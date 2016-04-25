@@ -33,6 +33,7 @@ app.use('/users', require('./routes/users'));
 app.use('/admin', require('./routes/admin')); // Ese es creado por nosotros
 
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
