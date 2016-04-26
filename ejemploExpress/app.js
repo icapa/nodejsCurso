@@ -8,12 +8,13 @@ var bodyParser = require('body-parser');
 
 
 var app = express();
+
 // Conexion a la base de datos
 require('./lib/connectMongoose');
 
 // Esto es el modelo
 require('./models/Agente');
-
+require('./models/Usuario');
 
 
 
@@ -42,6 +43,7 @@ app.use('/admin', require('./routes/admin')); // Ese es creado por nosotros
 
 //-- Rutas del api
 app.use('/api/v1/agentes',require('./routes/api/v1/agentes'));
+app.use('/api/v1/usuarios',require('./routes/api/v1/usuarios'));
 
 
 // catch 404 and forward to error handler
