@@ -25,6 +25,20 @@ agenteSchema.statics.list = function(filter,start,limit,sort, cb){
 
 };
 
+var fs = require('fs');
+
+
+agenteSchema.statics.listPromise = function(){
+    return new Promise(function(resolve,reject){
+        fs.readFile(__dirname+'/../agentesMock.json','utf-8',function(err,data){
+            if (err){
+                reject(err);
+                return;
+            }
+            return resolve(data);
+        });      
+    });
+};
 
 // lo asignamos al modelo
 var Agente = mongoose.model('Agente',agenteSchema);

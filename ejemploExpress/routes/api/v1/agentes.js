@@ -14,6 +14,7 @@ var basicAuth = require('../../../lib/basicAuth');
 var jwtAuth = require('../../../lib/jwtAuth');
 
 //router.use(basicAuth('admin','1234'));
+
 router.use(jwtAuth());
 
 
@@ -38,6 +39,15 @@ router.get('/',function(req,res,next){
     });
 
 });
+
+router.get('/promesa',function(req,res){
+   Agente.listPromise().then(function(data){
+       res.json({sucess: true, rows: data});
+   }).catch(function(err){
+       res.json({sucess: false,error: err});
+   });
+});
+
 
 router.post('/',function(req,res,next){
     var agente = new Agente(req.body);
